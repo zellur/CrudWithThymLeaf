@@ -11,8 +11,42 @@
     <div class="row text-xs-center">
         <h1>Welcome To Learn</h1>
     </div>
-    <div class="row" style="background: green;">
+    <div class="row" style="background: white;">
         <h2>Thanks For Join With Us</h2>
+    </div>
+    <div class="row">
+        <table class="table table-responsive">
+            <thead>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Action</th>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.mobile}"></td>
+                <td th:text="${user.password}"></td>
+                <td>
+                    <a th:href="${ '/user/' + user.id +'/edit'}">Edit</a>
+                    <a th:href="${ '/user/' + user.id +'/delete'}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <form th:action="@{/save}" th:object="${'user'}" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Name">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" placeholder="Email">
+            <label for="mobile">Mobile</label>
+            <input type="text" id="mobile" name="mobile" placeholder="Mobile">
+            <label for="mobile">Password</label>
+            <input type="text" id="password" name="password" placeholder="Password">
+            <input type="submit" value="Add User">
+        </form>
     </div>
 </div>
 </body>
