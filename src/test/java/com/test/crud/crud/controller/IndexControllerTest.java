@@ -33,10 +33,5 @@ public class IndexControllerTest {
 
     }
 
-    @Test
-    public void login() {
-        userModel.setUserName("rakib");
-        userModel.setPassword("rakib");
-        assertEquals("dashboard",new IndexController(userService).login(userModel,model));
-    }
+
 }
